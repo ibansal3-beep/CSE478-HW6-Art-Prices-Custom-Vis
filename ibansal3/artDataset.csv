@@ -1,0 +1,214 @@
+id,artist,title,year,priceUSD,period,movement
+1,Ian Hamilton Finlay,Sea Poppy,1968.0,680,Contemporary,Abstract
+2,Gary Bower,Rolph Series,1970.0,1275,Contemporary,Geometric Abstraction
+3,Ed  Ruscha,Sin,1970.0,25000,Contemporary,Conceptual 
+4,Joe Goode,Untitled (028C),1971.0,4500,Contemporary,Conceptual 
+5,Judy Chicago,Mary Queen of Scots,1973.0,15000,Contemporary,Feminist Art 
+6,Vija Celmins,"Untitled (Desert), Untitled (Ocean), Untitled (Sky), Untitled (Galaxy)",1975.0,135000,Contemporary,Photorealism
+7,Frances Barth,Untitled Drawing Nbr 201,1976.0,1275,Contemporary,Geometric Abstraction
+8,Stuart Nielsen,Untitled,1976.0,1275,Contemporary,Abstract
+9,Richard Bernstein,Diamond,1977.0,3000,Contemporary,Pop Art
+10,Richard Bernstein,Ruby,1977.0,3000,Contemporary,Pop Art
+11,Kenzo Okada,Bamboo,1977.0,7575,Contemporary,Abstract Expressionism
+12,Marischa Burckhardt,Cut Squares,1978.0,1275,Contemporary,Geometric Abstraction
+13,Denise Green,Becoming Subject,1979.0,1275,Contemporary,Abstract
+14,Steven Barbash,Four Tulips,1982.0,680,Contemporary,Realism
+15,Carolyn Brady,"Green Lamp, Red Table",1985.0,680,Contemporary,Realism
+16,Jon Groom,Untitled,1985.0,1275,Contemporary,Geometric Abstraction
+17,John Hoyland,Mael,1986.0,680,Contemporary,Abstract
+18,Robert Kushner,Reclining Man 29,1987.0,680,Contemporary,Abstract
+19,Gregory Amenoff,Sweet Home,1988.0,680,Contemporary,Abstract
+20,Nicholas Howey,Untitled,1989.0,1275,Contemporary,Abstract
+21,Cindy  Sherman,Madame de Pompadour (née Poisson),1990.0,10000,Contemporary,Conceptual 
+22,Cindy  Sherman,Madame de Pompadour (née Poisson),1990.0,12000,Contemporary,Conceptual 
+23,George Segal,Classical Still Life,1990.0,27500,Contemporary,Pop Art
+24,Jean Tinguely,Amour Totale,1991.0,800,Contemporary,Nouveau Réalisme
+25,Joel Otterson,Mr. and Mrs. Monster Meat Carving Set,1994.0,2500,Contemporary,Conceptual 
+26,Chris Costan,MT 2000,1997.0,680,Contemporary,Abstract
+27,Chris Costan,MT 2011,1997.0,680,Contemporary,Abstract
+28,James Siena,"Taste The Houses, Twirly, Upside Down Devil",1997.0,2550,Contemporary,Geometric Abstraction
+29,Dawn Mellor,Untitled ,1998.0,2000,Contemporary,Expressionism
+30,Gillian Carnegie,Untitled ,1998.0,3000,Contemporary,Impressionism
+31,Christopher Wool,Untitled (Triptych),1998.0,45000,Contemporary,Abstract
+32,Marina Abramović,Chair for the Spirit Chair for Man,1999.0,12500,Contemporary,Conceptual 
+33,Justine Kurland,Explorer,2000.0,1000,Contemporary,Realism
+34,Giuseppe Penone,Brain II,2000.0,4500,Contemporary,Conceptual 
+35,Grant Hacking,Zebras in the Hills,2000.0,6000,Contemporary,Realism
+36,David Fokos,Canal,2001.0,680,Contemporary,Realism
+37,Lizbeth Mitty,Nightride Overpass,2001.0,800,Contemporary,Impressionism
+38,Alexis Marguerite Teplin,Feverish Embarkation,2001.0,2500,Contemporary,Abstract
+39,Guillermo Kuitca,Coat Check,2002.0,4000,Contemporary,Geometric Abstraction
+40,Linda Besse,Servel Portrait,2003.0,700,Contemporary,Realism
+41,Larry Bell,New Test #1,2003.0,71500,Contemporary,Minimalism
+42,Orly Genger,Untitled,2004.0,1275,Contemporary,Abstract
+43,Russell Young,Elizabeth Taylor,2005.0,15000,Contemporary,Pop Art
+44,John Benton Harris,Brooklyn Heights NYC,2006.0,800,Contemporary,Realism
+45,Matthew Brannon,How It All Ends 2006,2006.0,2000,Contemporary,Conceptual 
+46,Kota Ezawa,Earth from Moon (After NASA 1969),2006.0,3995,Contemporary,Realism
+47,Sterling Ruby,Carvings 4 ,2006.0,5000,Contemporary,Abstract
+48,Eric Fischl,"Two Bathers, Black and White",2007.0,4000,Contemporary,Expressionism
+49,Allison V. Smith,Refinery Road (one of three),2007.0,7500,Contemporary,Realism
+50,Ed  Ruscha,"New Wood, Old Wood",2007.0,15000,Contemporary,Conceptual 
+51,Suzanne Song,"Untitled, Replica V3",2008.0,680,Contemporary,Minimalism
+52,Anne Ross,Passageway,2008.0,800,Contemporary,Surrealism
+53,Karim Noureldin,"Untitled, 2000",2008.0,1500,Contemporary,Minimalism
+54,Dan Walsh,Viewing Suite IV,2008.0,1500,Contemporary,Abstract
+55,Biff Elrod,G-OW-RW,2008.0,5500,Contemporary,Pop Art
+56,Sze Tsung Leong,"Luohu District, Shenzhen",2008.0,8995,Contemporary,Realism
+57,Russell Young,Elizabeth Taylor Portrait,2008.0,15000,Contemporary,Pop Art
+58,Robin Rhode,Ballad to Ballet,2008.0,30000,Contemporary,Conceptual 
+59,John Newman,Red Through And Through,2010.0,680,Contemporary,Abstract
+60,James Welling,Glass House,2010.0,23000,Contemporary,Conceptual 
+61,Chuck Webster,Untitled,2011.0,1500,Contemporary,Abstract
+62,Biff Elrod,Other Woman I,2011.0,6500,Contemporary,Pop Art
+63,Mark Fox,Beneath,2012.0,680,Contemporary,Abstract
+64,Diane Cionni,Reason And Romance #9,2012.0,680,Contemporary,Abstract
+65,Jane Kent,Miracle Grow #17,2012.0,680,Contemporary,Abstract
+66,Laura Wait,Scriptograph #14,2012.0,1500,Contemporary,Expressionism
+67,RICHARD WOODS,"Remnant Number 3, Under The Sink",2012.0,1500,Contemporary,Pop Art
+68,Robert Indiana,"Seasons of Hope, Autumn",2012.0,9500,Contemporary,Pop Art
+69,Robert Indiana,"Seasons of Hope, Spring",2012.0,9500,Contemporary,Pop Art
+70,Francesco Correggia,Si Sciara,2012.0,12000,Contemporary,Abstract
+71,Francesco Correggia,Verso Sera,2012.0,12000,Contemporary,Abstract
+72,Russell Young,Marilyn Hope,2013.0,5100,Contemporary,Pop Art
+73,Takashi Murakami,"And Then... All Things Good and Bad, All Days Fine and Rough",2014.0,3000,Contemporary,Pop Art
+74,Charline von Heyl,Nightpack (Red Yellow Blue),2014.0,8500,Contemporary,Abstract
+75,Gustave Blache III,Natalie Scrape Cleaning,2014.0,22500,Contemporary,Realism
+76,Ed  Ruscha,Rusty Signs - Dead End 1,2014.0,24000,Contemporary,Conceptual 
+77,Marcel Dzama,Here's a Fine Revolution,2015.0,4000,Contemporary,Magic Realism 
+78,Tomma Abts,Untitled (small circles),2015.0,6000,Contemporary,Abstract
+79,Leo Gabin,Two on Sidewalk,2016.0,5000,Contemporary,Abstract
+80,Darío Escobar,Sin Título,2016.0,8500,Contemporary,Pop Art
+81,Antonio Carreno,Allegorical #2,2016.0,11000,Contemporary,Abstract Expressionism
+82,Marina Adams,Untitled 2,2018.0,1500,Contemporary,Abstract
+83,Hossein Edalatkhah,Dancing Shadows,2018.0,12500,Contemporary,Organic/Biomorphic Abstraction
+84,Valérie Belin,White Narcissus in Orange (Colour Wonder),2018.0,22500,Contemporary,Conceptual 
+85,Jasper Johns,Untitled,2018.0,40000,Contemporary,Pop Art
+86,Biff Elrod,Ceiling Painting,2018.0,75000,Contemporary,Pop Art
+87,Matthew Brandt,"Box, Bar-pt1-pl014_sm.jpg",2019.0,7500,Contemporary,Conceptual 
+88,Hossein Edalatkhah,Pandora’s Garden,2019.0,10000,Contemporary,Expressionism
+89,Mieke Marple,Bad Feminist (Blue Lace Medusa),2019.0,12000,Contemporary,Feminist Art 
+90,Russell Young,Marilyn Crying,2019.0,16000,Contemporary,Pop Art
+91,Russell Young,Audrey Hepburn,2019.0,22000,Contemporary,Pop Art
+92,Hossein Edalatkhah,Entitled,2020.0,4375,Contemporary,Expressionism
+93,Matt Mullican,"REPRESENT THE WORK, Logo",2020.0,7000,Contemporary,Conceptual 
+94,Carmen Herrera,Island,2020.0,15000,Contemporary,Geometric Abstraction
+95,Devin Troy Strother,Grateful Dead Afro Cat Show,2021.0,1250,Contemporary,Pop Art
+96,Doris McCarthy,funzionario,2021.0,2500,Contemporary,Abstract
+97,Doris McCarthy,Arancia,2021.0,2500,Contemporary,Abstract
+98,Mike Reesé,Greed Sweet Like Candy,2021.0,5000,Contemporary,Pop Art
+99,Paige Neuhauser,Great Jones #2 from Great Jones Alley Series,2021.0,9500,Contemporary,Photorealism
+100,Tommaso Ottieri,Bayreuth Opera,2021.0,28500,Contemporary,Baroque
+101,Guy Pène Du Bois,Billboard,1920.0,12000,Modern,Realism
+102,George Pearse Ennis,Harbor Scene,1928.0,7500,Modern,Impressionism
+103,George Hoyningen-Huene,"Divers, Paris",1930.0,25000,Modern,Realism
+104,Konrad Cramer,Gas Station With Tree,1931.0,800,Modern,Realism
+105,George Platt Lynes,Kate Lawson,1935.0,600,Modern,Realism
+106,Barbara Morgan,"Martha Graham, Ekstasis ",1935.0,1000,Modern,Performance Art
+107,Barbara Morgan,"Martha Graham,  Ekstasis",1935.0,2000,Modern,Performance Art
+108,Edgar Nye,Going Home #24,1935.0,3250,Modern,Expressionism
+109,Ruth Bernhard,Creation ,1936.0,7000,Modern,Realism
+110,Ruth Bernhard,Two Cows,1937.0,3000,Modern,Realism
+111,Walker Evans,Passengers on the Subway,1939.0,8000,Modern,Realism
+112,Horst P. Horst,Dali Costumes - Paris,1939.0,15000,Modern,Realism
+113,Barbara Morgan,"Martha Graham, Satyric Festival Song",1940.0,2000,Modern,Performance Art
+114,Horst P. Horst,Nails In Technicolor,1941.0,7000,Modern,Realism
+115,Ruth Bernhard,Shell and Driftwood,1943.0,2000,Modern,Realism
+116,George Platt Lynes,Laurie Douglas Horbach,1944.0,600,Modern,Realism
+117,Ivan Albright,Follow Me,1948.0,1800,Modern,Realism
+118,Flip Schulke,"Cassius Clay at the 5th Street Gym, Miami Beach, FL",1961.0,5000,Modern,Realism
+119,Flip Schulke,Cassius Clay training in a pool at the Sir John Hotel in Miami,1964.0,4000,Modern,Realism
+120,Flip Schulke,"Muhammad Ali at the Fifth Street Gym, Miami Beach",1964.0,4000,Modern,Realism
+121,Ralph Morse,Cassius Clay After Defeating Sonny Liston,1964.0,4500,Modern,Realism
+122,Tony Jannetti,The Third Emergence,1971.0,680,Modern,Abstract
+123,Fred Gutzeit,Balls with Red,1971.0,1275,Modern,Abstract
+124,Antonio Frasconi,Cantos IV,1974.0,680,Modern,Abstract
+125,Paul Levy,Commonwealth of Massachusetts Building Code,1975.0,680,Modern,Pop Art
+126,Hanlyn Davies,Jumble,1975.0,680,Modern,Abstract
+127,John Duff,Untitled Print,1975.0,680,Modern,Geometric Abstraction
+128,Mary Heebner,Powder,1979.0,1275,Modern,Abstract
+129,Ansel Adams,"Fresh Snow, Yosemite Valley, California ",1947.0,15000,Post-War,Realism
+130,Lillian Bassman,"Across the Restaurant at Le Grand Vefour, Barbara Mullen, Harper's Bazaar, Paris [Dress by Jacques Fath]",1949.0,50000,Post-War,Realism
+131,Lucien Hervé,Maquette de Jean Prouvé,1950.0,3000,Post-War,Realism
+132,Frances McLaughlin-Gill,"Fiona Campbell, The Palace at Versailles, Paris",1950.0,9500,Post-War,Realism
+133,Ruth Bernhard,Classic Torso,1952.0,7000,Post-War,Realism
+134,Ernst Haas,"NYC, USA",1953.0,4500,Post-War,Realism
+135,CARL VAN VECHTEN,Dizzy Gillespie,1955.0,2250,Post-War,[nan]
+136,Philip Howard Evergood,Wounders of a Frog ,1958.0,5500,Post-War,Expressionism
+137,Marc Chagall,"The Angel, M.288",1960.0,3500,Post-War,Surrealism
+138,Flip Schulke,"Cassius Clay, Miami Beach",1961.0,4000,Post-War,Realism
+139,Kim Gottlieb Walker,Jimi Plays Backstage at The Shrine,1967.0,2500,Post-War,Realism
+140,Bruce Nauman,Sequence,1969.0,3895,Post-War,Pop Art
+141,Kim Gottlieb Walker,Andy Warhol Smiling (Unusual),1970.0,3000,Post-War,Realism
+142,John Fischer,Untitled ,1971.0,6000,Post-War,Expressionism
+143,DON NICE,Radish,1972.0,680,Post-War,Realism
+144,John Fischer,Triangle #NY,1972.0,3000,Post-War,Abstract
+145,John Fischer,Secret Source,1972.0,6500,Post-War,Expressionism
+146,Henry Moore,"Les Poètes, Two Heads",1973.0,2000,Post-War,Abstract
+147,Frederick Wardy,Untitled,1974.0,1500,Post-War,Minimalism
+148,Frederick Wardy,Untitled,1974.0,1500,Post-War,Minimalism
+149,Richard Haas,New York Central Building,1974.0,1500,Post-War,Traditional
+150,Eugene Charlton-Rafalsky,Untitled Landscape,1974.0,1500,Post-War,Expressionism
+151,Kim Gottlieb Walker,"Bob Marley Bare Chest at Window, Jamaica ",1975.0,2500,Post-War,Realism
+152,Anthony Gross,Homage To Constable (Salisbury),1976.0,800,Post-War,Impressionism
+153,Norman Stevens,Stonehenge,1976.0,800,Post-War,Realism
+154,"Patrick Caulfield, R.A.",For John Constable,1976.0,2250,Post-War,Pop Art
+155,John Andre Gundelfinger,Untitled No. 16,1977.0,1500,Post-War,Impressionism
+156,John Andre Gundelfinger,Untitled No. 4,1977.0,1500,Post-War,Impressionism
+157,Alan Turner,White Landscape,1978.0,800,Post-War,Expressionism
+158,Ray Ciarrocchi,"Cove at Bremen, Maine",1978.0,1500,Post-War,Impressionism
+159,Bernard Chaet,Untitled Landscape #22,1978.0,1500,Post-War,Expressionism
+160,Forrest Moses,Untitled,1979.0,800,Post-War,Expressionism
+161,John Gundelfinger,Untitled No 2,1979.0,800,Post-War,Realism
+162,Sandy Walker,Beach Pastel,1979.0,1500,Post-War,Expressionism
+163,Paul Narkiewicz,Nursery,1980.0,1500,Post-War,Expressionism
+164,Curtis Ripley,The Pink Vase,1981.0,800,Post-War,Realism
+165,Billy Sullivan,Daisy On Carpet,1981.0,1500,Post-War,Realism
+166,T.L. Solien,Fragments Of Hope,1982.0,800,Post-War,Conceptual 
+167,T.L. Solien,Fragments Of Hope,1982.0,800,Post-War,Conceptual 
+168,T.L. Solien,Fragments Of Hope,1982.0,800,Post-War,Conceptual 
+169,Stuart Allen,Untitled (Still Life),1983.0,680,Post-War,Realism
+170,Mariann Loveland-Miller,Day Box ,1983.0,995,Post-War,Surrealism
+171,Richard Chiriani,"A Schoharie Marsh, Spring",1984.0,800,Post-War,Realism
+172,Agnes Story,Fragment Of Pelicano Club,1984.0,800,Post-War,Expressionism
+173,Mary Armstrong,Tide Pool Shuffle,1984.0,1500,Post-War,Expressionism
+174,Barbara Apel,Landscape No 8,1984.0,1500,Post-War,Expressionism
+175,John Fischer,Untitled ,1984.0,4000,Post-War,Expressionism
+176,William Klein,Serge Gainsbourg (Cover for 'Love on the Beat' Album),1984.0,6000,Post-War,Realism
+177,Thomas Struth,"Schönfeldstrasse (Bronze-Reiter), München",1984.0,7000,Post-War,Realism
+178,Marcia Scanlon,Delphi Tholos II,1985.0,800,Post-War,Realism
+179,Claire Van Vliet,Summer 2,1985.0,800,Post-War,Expressionism
+180,MICHAEL MAZUR ,Wakeby Island,1985.0,800,Post-War,Expressionism
+181,Fred Mitchell,"Killyan Kill, Afternoon ",1985.0,995,Post-War,Expressionism
+182,Paul Manes,Untitled ,1986.0,595,Post-War,Abstract
+183,June Redfern,Seal,1986.0,800,Post-War,Abstract
+184,Donna Dennis,Entrance,1986.0,800,Post-War,Expressionism
+185,Bruce Mclean,Spider,1986.0,800,Post-War,Expressionism
+186,Thomas Struth,"Yamaguchi, Landscape with Garages",1986.0,7000,Post-War,Realism
+187,JOHN BELLANY,Untitled,1987.0,800,Post-War,Surrealism
+188,Ron Trujillo,Atlantis Explosion No 4,1987.0,800,Post-War,Expressionism
+189,Karen Kunc,Current's Edge,1987.0,800,Post-War,Abstract
+190,Bruce Porter,Flute Like Voices III,1987.0,800,Post-War,Abstract
+191,Max Miller,Untitled NBR 60,1987.0,1500,Post-War,Abstract
+192,Susana Solano,Plaza Del Joc III,1988.0,800,Post-War,Expressionism
+193,Robert  Motherwell,Blue Gesture (Octavior Paz),1988.0,5000,Post-War,Abstract Expressionism
+194,Elspeth Lamb,Anaktos,1989.0,800,Post-War,Abstract
+195,Kate Whiteford,Sitelines,1989.0,800,Post-War,Abstract
+196,Freya Hansell,Untitled,1989.0,800,Post-War,Expressionism
+197,Kate Whiteford,Sitelines,1989.0,800,Post-War,Abstract
+198,George Atkinson,North Of Pawnee,1989.0,1500,Post-War,Impressionism
+199,Nancy Brett,Roaring River 73,1989.0,1500,Post-War,Expressionism
+200,Christine Olsavsky,Humid Hearts,1989.0,1500,Post-War,Abstract
+201,Larry Rivers,Make Believe Ballroom ,1989.0,8750,Post-War,Pop Art
+202,Joan Nelson,Untitled,1990.0,800,Post-War,Expressionism
+203,James Romberger,Third Street Garden,1990.0,1500,Post-War,Realism
+204,John Berens,Trees and Darkness,1990.0,1500,Post-War,Expressionism
+205,Vernon Fisher,Objects in the Field,1990.0,3500,Post-War,Conceptual 
+206,John Fischer,Horizontal Line of Lines,1990.0,6000,Post-War,Expressionism
+207,Adrian Wiszniewski,Landscape,1991.0,800,Post-War,Surrealism
+208,Donald Sultan,"Fruit and Flowers, Yellow Roses",1992.0,3000,Post-War,Expressionism
+209,Donald Sultan,"Fruit and Flowers III, Acanthus",1992.0,3000,Post-War,Minimalism
+210,William Wegman,Enframed,1995.0,8500,Post-War,Realism
+211,Louise  Bourgeois,Crochet IV,1998.0,25000,Post-War,Feminist Art 
+212,Abelardo Morell,Camera Obscura Image of the Brooklyn Bridge in Bedroom,1999.0,6995,Post-War,Realism
+213,Kirsten Stolle,Diego I,2002.0,800,Post-War,Abstract
