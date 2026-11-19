@@ -1,11 +1,614 @@
-<!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>The Anatomy of Art's Value | Museum of Patterns</title><link href="style.css" rel="stylesheet"/><script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script></head>
-<body><main>
-<header><div class="eyebrow">THE MUSEUM OF PATTERNS <span> / </span> EXHIBIT 06 · ART &amp; ECONOMICS</div><div class="headline"><div><p class="kicker">A visual field guide to the art market</p><h1>The Anatomy<br/>of <em>Art's Value</em><span class="dot">.</span></h1></div><div class="intro"><p>What does a price look like?</p><span>Each bloom is one artwork. Follow the petals across time to see how prices, movements, and periods form a changing landscape of value.</span></div></div><div class="hairline"></div></header>
-<section class="toolbar"><div><span class="tiny-label">EXPLORE THE COLLECTION</span><strong id="count">213 artworks on view</strong></div><div aria-label="Filter by art period" class="filters"><button class="active" data-period="All">All periods</button><button data-period="Modern">Modern</button><button data-period="Post-War">Post-War</button><button data-period="Contemporary">Contemporary</button></div></section>
-<section class="viz-shell"><div class="chart-top"><span>01 / THE COLLECTION IN BLOOM</span><span>CREATION YEAR →</span></div><div class="viz-wrap"><svg aria-label="Artworks represented as custom flower glyphs, positioned by year and grouped by period" id="viz" role="img" viewbox="0 0 1320 720"></svg><div class="tooltip" hidden="" id="tooltip"></div></div><div class="chart-bottom"><span>Earlier works</span><span>Later works</span></div></section>
-<section class="legend-area"><div class="legend-panel"><div class="section-id">READING THE BLOOMS</div><h2>A different kind of<br/><em>price tag.</em></h2><p>Each flower is a custom data glyph. Its petals grow with price, its hue identifies an art movement, and its place in the garden records when and within which period it was made.</p></div><div class="legend-details"><div class="legend-title">SIZE / PRICE IN USD <span>Petal reach uses a square-root scale</span></div><div class="size-key"><div class="sample"><svg viewbox="0 0 85 85"><g id="sample-small" transform="translate(42 42)"></g></svg><span>$2,000</span></div><div class="sample"><svg viewbox="0 0 85 85"><g id="sample-mid" transform="translate(42 42)"></g></svg><span>$20,000</span></div><div class="sample"><svg viewbox="0 0 85 85"><g id="sample-big" transform="translate(42 42)"></g></svg><span>$100,000</span></div></div><div class="legend-title movement-title">COLOR / ART MOVEMENT <span>Hover over a bloom for details</span></div><div class="movement-legend" id="movement-legend"><span><i style="background:#e8bc78"></i>Realism</span><span><i style="background:#ed8d77"></i>Abstract</span><span><i style="background:#a7c4b2"></i>Expressionism</span><span><i style="background:#ddbbdc"></i>Pop Art</span><span><i style="background:#a5c4dc"></i>Conceptual</span><span><i style="background:#e0d787"></i>Surrealism</span><span><i style="background:#d4a887"></i>Impressionism</span><span><i style="background:#b4c0ad"></i>Other</span></div><p class="note">Movements not listed individually are grouped under “Other.” The horizontal location shows the recorded creation year; vertical bands show the dataset's art-period labels. Within each band, vertical position is spread to reduce overlap and does not encode an additional variable.</p></div></section>
-<section class="bottom-grid"><div><div class="section-id">02 / CURATOR'S NOTE</div><h2>What makes a work<br/><em>valuable?</em></h2><p>There is no single answer in these records. Works created in the same year or assigned to the same movement can carry very different prices. This exhibit invites you to notice the variation rather than assume that age or style determines worth.</p></div><div class="method"><div class="section-id">03 / DESIGN &amp; METHOD</div><h3>How this exhibit was made</h3><p><b>Marks:</b> Each artwork is an original five-petal radial glyph with a central disc. <b>Channels:</b> Petal radius encodes price (square-root scale); color encodes movement; horizontal position encodes exact creation year; vertical band encodes art period. <b>Interaction:</b> Hover or focus for artwork metadata; filter by period using the buttons above.</p><p><b>Custom visualization category — combinatorial:</b> This design combines a time-positioned, period-banded visual field with bespoke radial flower glyphs that encode individual records. The flower geometry is generated with custom SVG paths in D3, rather than reproducing a stock D3 block or merely linking ordinary charts.</p><p><b>Data:</b> Kaggle, “Art Price Dataset” (<code>artDataset.csv</code>). This exhibit uses 213 selected records from the source, requiring a valid numeric price, an exact four-digit creation year, and a known period and movement. Records were sampled across art periods and price quintiles to show a broad range; it is not a statistically representative estimate of the full market. Price strings were converted from USD notation into numbers. Original visualization code; no external D3 example or block was adapted. D3.js v7 is used for scales, SVG construction, and interaction.</p><p class="footnote">Prices are recorded dataset values, not verified auction results or inflation-adjusted estimates. Artwork illustrations are abstract data symbols, not reproductions of the original art.</p></div></section>
-<footer><span>THE MUSEUM OF PATTERNS</span><span>DATA VISUALIZATION · CUSTOM VIS · IBANSAL3</span><span>06 / 06</span></footer>
-</main><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="The Anatomy of Art's Value is an interactive
+    data visualization exploring how artwork prices,
+    art movements, and historical periods relate
+    through custom flower-shaped data glyphs."
+  >
+
+  <meta name="author" content="ibansal3">
+
+  <title>
+    The Anatomy of Art's Value | Museum of Patterns
+  </title>
+
+  <!-- Museum stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- D3.js version 7 -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"
+  ></script>
+</head>
+
+<body>
+
+  <main>
+
+    <!-- ==================================================
+         01. MUSEUM HEADER
+         ================================================== -->
+
+    <header>
+
+      <div class="eyebrow">
+        THE MUSEUM OF PATTERNS
+        <span aria-hidden="true">/</span>
+        EXHIBIT 06 · ART &amp; ECONOMICS
+      </div>
+
+      <div class="headline">
+
+        <div>
+
+          <p class="kicker">
+            A visual field guide to the art market
+          </p>
+
+          <h1>
+            The Anatomy<br>
+            of <em>Art's Value</em><span
+              class="dot"
+              aria-hidden="true"
+            >.</span>
+          </h1>
+
+        </div>
+
+        <div class="intro">
+
+          <p>
+            What does a price look like?
+          </p>
+
+          <span>
+            Each bloom is one artwork. Follow the
+            petals across time to see how prices,
+            movements, and periods form a changing
+            landscape of value.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="hairline" aria-hidden="true"></div>
+
+    </header>
+
+
+    <!-- ==================================================
+         02. COLLECTION FILTERS
+         ================================================== -->
+
+    <section
+      class="toolbar"
+      aria-label="Explore the artwork collection"
+    >
+
+      <div>
+
+        <span class="tiny-label">
+          EXPLORE THE COLLECTION
+        </span>
+
+        <strong id="count" aria-live="polite">
+          Loading artworks…
+        </strong>
+
+      </div>
+
+      <div
+        class="filters"
+        role="group"
+        aria-label="Filter artworks by art period"
+      >
+
+        <button
+          type="button"
+          class="active"
+          data-period="All"
+          aria-pressed="true"
+        >
+          All periods
+        </button>
+
+        <button
+          type="button"
+          data-period="Modern"
+          aria-pressed="false"
+        >
+          Modern
+        </button>
+
+        <button
+          type="button"
+          data-period="Post-War"
+          aria-pressed="false"
+        >
+          Post-War
+        </button>
+
+        <button
+          type="button"
+          data-period="Contemporary"
+          aria-pressed="false"
+        >
+          Contemporary
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         03. CUSTOM D3 VISUALIZATION
+         ================================================== -->
+
+    <section
+      class="viz-shell"
+      aria-labelledby="collection-heading"
+    >
+
+      <div class="chart-top">
+
+        <span id="collection-heading">
+          01 / THE COLLECTION IN BLOOM
+        </span>
+
+        <span>
+          CREATION YEAR →
+        </span>
+
+      </div>
+
+      <div class="viz-wrap">
+
+        <!--
+          Custom SVG visualization generated by D3.
+
+          X position:
+            Artwork creation year, with slight jitter
+            to reduce overlap.
+
+          Y position:
+            Dataset art-period band, with spreading
+            inside each band.
+
+          Flower petal size:
+            Artwork price in USD, square-root scale.
+
+          Flower color:
+            Art movement.
+
+          Interaction:
+            Hover, keyboard focus, and period filters.
+
+          The artwork glyphs are created by script.js.
+        -->
+
+        <svg
+          id="viz"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1320 720"
+          role="img"
+          aria-label="Interactive collection of custom five-petal flower glyphs. Each flower represents an artwork. Horizontal position represents creation year, vertical grouping represents art period, flower size represents price, and color represents art movement."
+          aria-describedby="visualization-instructions"
+        ></svg>
+
+        <div
+          id="tooltip"
+          class="tooltip"
+          hidden
+        ></div>
+
+      </div>
+
+      <div class="chart-bottom">
+
+        <span>
+          Earlier works
+        </span>
+
+        <span>
+          Later works
+        </span>
+
+      </div>
+
+      <p
+        id="visualization-instructions"
+        class="visually-hidden"
+      >
+        Use the period filter buttons to explore the
+        collection. Hover over an artwork flower or
+        move keyboard focus to it to inspect its
+        title, artist, creation year, art movement,
+        art period, and recorded price.
+      </p>
+
+    </section>
+
+
+    <!-- ==================================================
+         04. VISUAL ENCODING LEGEND
+         ================================================== -->
+
+    <section
+      class="legend-area"
+      aria-labelledby="legend-heading"
+    >
+
+      <div class="legend-panel">
+
+        <div class="section-id">
+          READING THE BLOOMS
+        </div>
+
+        <h2 id="legend-heading">
+          A different kind of<br>
+          <em>price tag.</em>
+        </h2>
+
+        <p>
+          Each flower is a custom data glyph. Its
+          petals grow with price, its hue identifies
+          an art movement, and its place in the
+          garden records when and within which
+          period it was made.
+        </p>
+
+      </div>
+
+
+      <div class="legend-details">
+
+        <!-- FLOWER SIZE LEGEND -->
+
+        <div class="legend-title">
+
+          SIZE / PRICE IN USD
+
+          <span>
+            Petal reach uses a square-root scale
+          </span>
+
+        </div>
+
+        <div
+          class="size-key"
+          aria-label="Flower size represents artwork price"
+        >
+
+          <div class="sample">
+
+            <svg
+              viewBox="0 0 85 85"
+              role="img"
+              aria-label="Flower size example for 2,000 US dollars"
+            >
+              <g
+                id="sample-small"
+                transform="translate(42 42)"
+              ></g>
+            </svg>
+
+            <span>$2,000</span>
+
+          </div>
+
+          <div class="sample">
+
+            <svg
+              viewBox="0 0 85 85"
+              role="img"
+              aria-label="Flower size example for 20,000 US dollars"
+            >
+              <g
+                id="sample-mid"
+                transform="translate(42 42)"
+              ></g>
+            </svg>
+
+            <span>$20,000</span>
+
+          </div>
+
+          <div class="sample">
+
+            <svg
+              viewBox="0 0 85 85"
+              role="img"
+              aria-label="Flower size example for 100,000 US dollars"
+            >
+              <g
+                id="sample-big"
+                transform="translate(42 42)"
+              ></g>
+            </svg>
+
+            <span>$100,000</span>
+
+          </div>
+
+        </div>
+
+
+        <!-- ART MOVEMENT LEGEND -->
+
+        <div class="legend-title movement-title">
+
+          COLOR / ART MOVEMENT
+
+          <span>
+            Hover or focus on a bloom for details
+          </span>
+
+        </div>
+
+        <div
+          class="movement-legend"
+          id="movement-legend"
+          aria-label="Art movement color legend"
+        >
+
+          <span>
+            <i
+              style="background: #e8bc78;"
+              aria-hidden="true"
+            ></i>
+            Realism
+          </span>
+
+          <span>
+            <i
+              style="background: #ed8d77;"
+              aria-hidden="true"
+            ></i>
+            Abstract
+          </span>
+
+          <span>
+            <i
+              style="background: #a7c4b2;"
+              aria-hidden="true"
+            ></i>
+            Expressionism
+          </span>
+
+          <span>
+            <i
+              style="background: #ddbbdc;"
+              aria-hidden="true"
+            ></i>
+            Pop Art
+          </span>
+
+          <span>
+            <i
+              style="background: #a5c4dc;"
+              aria-hidden="true"
+            ></i>
+            Conceptual
+          </span>
+
+          <span>
+            <i
+              style="background: #e0d787;"
+              aria-hidden="true"
+            ></i>
+            Surrealism
+          </span>
+
+          <span>
+            <i
+              style="background: #d4a887;"
+              aria-hidden="true"
+            ></i>
+            Impressionism
+          </span>
+
+          <span>
+            <i
+              style="background: #b4c0ad;"
+              aria-hidden="true"
+            ></i>
+            Other
+          </span>
+
+        </div>
+
+
+        <!-- POSITION ENCODING NOTE -->
+
+        <p class="note">
+          Movements not listed individually are
+          grouped under “Other.” Horizontal position
+          represents recorded creation year, with
+          slight jitter to reduce overlapping flowers.
+          Vertical bands represent the dataset's
+          art-period labels. Within each band,
+          vertical spreading reduces overlap and
+          does not encode another variable.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         05. CURATOR'S INTERPRETATION
+         ================================================== -->
+
+    <section
+      class="bottom-grid"
+      aria-label="Interpretation and visualization methodology"
+    >
+
+      <div>
+
+        <div class="section-id">
+          02 / CURATOR'S NOTE
+        </div>
+
+        <h2>
+          What makes a work<br>
+          <em>valuable?</em>
+        </h2>
+
+        <p>
+          There is no single answer in these records.
+          Works created in the same year or assigned
+          to the same movement can carry very
+          different prices.
+        </p>
+
+        <p>
+          This exhibit invites you to notice the
+          variation rather than assume that age or
+          style determines worth. The flowers reveal
+          patterns within the selected data, not a
+          universal formula for artistic value.
+        </p>
+
+      </div>
+
+
+      <!-- DESIGN AND METHOD -->
+
+      <div class="method">
+
+        <div class="section-id">
+          03 / DESIGN &amp; METHOD
+        </div>
+
+        <h3>
+          How this exhibit was made
+        </h3>
+
+        <p>
+          <b>Marks:</b>
+          Each artwork is represented by an original
+          five-petal radial flower glyph with a
+          central disc.
+        </p>
+
+        <p>
+          <b>Visual channels:</b>
+          Petal radius encodes recorded price in USD
+          using a square-root scale. Color encodes
+          art movement. Horizontal position encodes
+          creation year, with slight jitter to
+          reduce overlap. Vertical bands encode
+          the dataset's art-period categories.
+        </p>
+
+        <p>
+          <b>Interactions:</b>
+          Hover over or focus on a flower to inspect
+          artwork metadata. Use the period filter
+          buttons to display all artworks or one
+          period at a time.
+        </p>
+
+        <p>
+          <b>Custom visualization category —
+          combinatorial:</b>
+          This design combines a time-positioned,
+          period-banded visual field with custom
+          radial flower glyphs that encode individual
+          artwork records. The flower geometry is
+          created with SVG paths in D3 rather than
+          using an ordinary bar chart, scatterplot,
+          or stock D3 visualization block.
+        </p>
+
+        <p>
+          <b>Dataset:</b>
+          Kaggle, “Art Price Dataset”
+          (<code>artDataset.csv</code>).
+          This exhibit displays 213 artwork records
+          from a working dataset containing numeric
+          prices, creation years, art periods,
+          and art-movement labels.
+        </p>
+
+        <p>
+          <b>Data preparation:</b>
+          Price values and creation years are
+          interpreted numerically for the visual
+          encodings. Artwork movements not represented
+          as individual legend categories are displayed
+          as “Other.” The collection is a selected
+          subset and should not be treated as a
+          statistically representative sample of
+          the entire art market.
+        </p>
+
+        <p>
+          <b>Implementation:</b>
+          D3.js v7 is used for data loading, scales,
+          SVG construction, custom glyph generation,
+          and interaction. The visualization is
+          implemented in the project's
+          <code>script.js</code> file.
+        </p>
+
+        <p class="footnote">
+          Prices are recorded dataset values,
+          not independently verified auction
+          outcomes or inflation-adjusted estimates.
+          The flower symbols are abstract data marks,
+          not reproductions of the original artworks.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         06. FOOTER
+         ================================================== -->
+
+    <footer>
+
+      <span>
+        THE MUSEUM OF PATTERNS
+      </span>
+
+      <span>
+        DATA VISUALIZATION · CUSTOM VIS · IBANSAL3
+      </span>
+
+      <span>
+        06 / 06
+      </span>
+
+    </footer>
+
+  </main>
+
+
+  <!-- ====================================================
+       APPLICATION SCRIPT
+       Loaded after the document elements exist.
+       ==================================================== -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
