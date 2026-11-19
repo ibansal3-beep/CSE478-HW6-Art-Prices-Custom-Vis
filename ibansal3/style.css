@@ -1,1 +1,933 @@
-:root{--bg:#f4efe5;--ink:#213c34;--muted:#62756c;--dark:#213a33;--gold:#bb8252}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}main{max-width:1510px;margin:auto;padding:30px clamp(18px,4vw,72px)}header{padding:10px 0 48px}.eyebrow,.section-id,.kicker,.legend-title,footer{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}.eyebrow{border-bottom:1px solid #c7cec2;padding-bottom:18px}.eyebrow span{padding:0 12px;color:var(--gold)}.headline{display:grid;grid-template-columns:1.4fr .6fr;align-items:end;gap:40px;padding-top:44px}.kicker{color:var(--gold)}h1,h2,h3{font-family:Georgia,serif;font-weight:400;letter-spacing:-.045em}h1{font-size:clamp(55px,7vw,112px);line-height:.98;margin:16px 0 0}h1 em,h2 em{font-weight:400;color:#a66852}.dot{color:#b57d52}.intro{font-family:Georgia,serif;font-size:clamp(18px,2vw,25px);line-height:1.55}.intro p{font-weight:bold;margin:0 0 12px}.intro span{color:var(--muted)}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:1px solid #c8cfc4;border-bottom:1px solid #c8cfc4;padding:19px 0}.toolbar .section-id{color:var(--muted)}.toolbar button{border:1px solid #aebeb2;background:transparent;color:var(--ink);border-radius:50px;padding:11px 20px;margin:3px;cursor:pointer;font-weight:600}.toolbar button.active,.toolbar button:hover{background:var(--ink);color:white}.viz-shell{background:var(--dark);padding:26px 22px 12px;margin-top:24px;color:#e8eadf;border-radius:5px}.viz-shell .section-id{color:#c8d5c8}.viz-shell h2{font-size:32px;margin:8px 0 5px}.viz-shell svg#viz{display:block;width:100%;height:auto;overflow:visible}.chart-bottom{display:flex;justify-content:space-between;font-size:12px;color:#aabcb0;padding:0 24px 10px}.tooltip{position:fixed;z-index:5;pointer-events:none;max-width:300px;background:#fff9ec;color:var(--ink);padding:15px 18px;border:1px solid #d2c7b4;box-shadow:0 12px 40px #0003;font-size:13px;line-height:1.6}.tooltip strong{display:block;font-family:Georgia,serif;font-size:18px}.legend-area{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;padding:55px 0;border-bottom:1px solid #c8cfc4}.legend-panel h2,.bottom-grid h2{font-size:clamp(32px,4vw,55px);line-height:1.08}.legend-panel p,.bottom-grid p{line-height:1.75;color:#53675d}.legend-details{padding-top:15px}.legend-title{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #c9d0c4;padding:12px 0}.legend-title span{letter-spacing:0;text-transform:none;color:#66776d;font-weight:400}.size-key{display:flex;gap:20px;justify-content:space-around}.sample{display:flex;flex-direction:column;align-items:center;font-size:13px}.sample svg{width:85px;height:85px}.movement-legend{display:flex;flex-wrap:wrap;gap:12px 22px;padding:20px 0}.movement-legend span{font-size:13px;white-space:nowrap}.movement-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px}.note,.footnote{font-size:12px}.bottom-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:65px;padding:50px 0}.method{border-left:1px solid #c9d0c4;padding-left:40px}.method h3{font-size:32px}footer{border-top:1px solid #c9d0c4;padding:22px 0;display:flex;justify-content:space-between;gap:10px;color:#60756a}.artwork-glyph{cursor:pointer;outline:none}.artwork-glyph:focus-visible path{stroke:white;stroke-width:2.5}.artwork-glyph:hover{filter:drop-shadow(0 0 5px #fff9)}@media(max-width:760px){.headline,.legend-area,.bottom-grid{grid-template-columns:1fr}.method{border:0;padding:0}.headline{gap:12px}footer{flex-wrap:wrap}.viz-shell{padding:15px 6px}.toolbar button{padding:8px 12px}}
+:root {
+  --bg: #f4efe5;
+  --ink: #213c34;
+  --muted: #62756c;
+  --dark: #213a33;
+  --gold: #bb8252;
+
+  --rose: #a66852;
+  --ivory: #fff9ec;
+  --panel: #2b423a;
+
+  --border: #c8cfc4;
+  --border-dark: #aebeb2;
+
+  --text-soft: #53675d;
+  --text-light: #e8eadf;
+
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: Arial, Helvetica, sans-serif;
+
+  --page-max: 1510px;
+  --radius: 5px;
+}
+
+/* =========================================================
+   2. GLOBAL RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background: var(--bg);
+  color: var(--ink);
+
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  width: 100%;
+  max-width: var(--page-max);
+
+  margin: 0 auto;
+  padding: 30px clamp(18px, 4vw, 72px);
+}
+
+button {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+p {
+  margin-top: 0;
+}
+
+svg {
+  max-width: 100%;
+}
+
+/* =========================================================
+   3. SHARED EDITORIAL LABELS
+   ========================================================= */
+
+.eyebrow,
+.section-id,
+.kicker,
+.legend-title,
+footer {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-id {
+  color: var(--ink);
+}
+
+.kicker {
+  color: var(--gold);
+}
+
+/* =========================================================
+   4. HEADER AND HERO
+   ========================================================= */
+
+header {
+  padding: 10px 0 48px;
+}
+
+.eyebrow {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow span {
+  padding: 0 12px;
+  color: var(--gold);
+}
+
+.headline {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.4fr)
+    minmax(260px, 0.6fr);
+
+  align-items: end;
+  gap: 40px;
+
+  padding-top: 44px;
+}
+
+h1 {
+  margin: 16px 0 0;
+
+  font-size: clamp(55px, 7vw, 112px);
+  line-height: 0.98;
+}
+
+h1 em,
+h2 em {
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.dot {
+  color: #b57d52;
+}
+
+.intro {
+  max-width: 420px;
+
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.55;
+}
+
+.intro p {
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.intro span {
+  color: var(--muted);
+}
+
+.hairline {
+  height: 0;
+}
+
+/* =========================================================
+   5. COLLECTION TOOLBAR
+   ========================================================= */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 16px 24px;
+
+  padding: 19px 0;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.toolbar > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  min-width: 180px;
+}
+
+.tiny-label {
+  color: var(--muted);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+#count {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Period filter container */
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-wrap: wrap;
+  gap: 8px;
+
+  min-width: 0;
+}
+
+/* Filter buttons */
+
+.toolbar button {
+  appearance: none;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 42px;
+
+  margin: 0;
+  padding: 10px 17px;
+
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+
+  background: transparent;
+  color: var(--ink);
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.toolbar button:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: white;
+}
+
+.toolbar button.active,
+.toolbar button[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+.toolbar button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   6. VISUALIZATION SHELL
+   ========================================================= */
+
+.viz-shell {
+  position: relative;
+
+  margin-top: 24px;
+  padding: 26px 22px 12px;
+
+  background: var(--dark);
+  color: var(--text-light);
+
+  border-radius: var(--radius);
+}
+
+.viz-shell .section-id {
+  color: #c8d5c8;
+}
+
+.viz-shell h2 {
+  margin: 8px 0 5px;
+  font-size: 32px;
+}
+
+.chart-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 10px;
+
+  padding: 0 14px 10px;
+
+  color: #d7e2d6;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.viz-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/*
+ * The SVG uses a 1320 x 720 viewBox.
+ * Preserve its aspect ratio so glyph positions remain
+ * consistent with the D3 coordinate system.
+ */
+
+.viz-shell svg#viz {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  overflow: visible;
+
+  background: transparent;
+}
+
+.chart-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 24px 10px;
+
+  font-size: 12px;
+  color: #c0cec3;
+}
+
+/* =========================================================
+   7. CUSTOM ARTWORK GLYPHS
+   ========================================================= */
+
+.artwork-glyph {
+  cursor: pointer;
+  outline: none;
+}
+
+.artwork-glyph path {
+  transition:
+    stroke-width 160ms ease,
+    fill-opacity 160ms ease;
+}
+
+.artwork-glyph:hover,
+.artwork-glyph:focus-visible {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.65));
+}
+
+.artwork-glyph:hover path,
+.artwork-glyph:focus-visible path {
+  stroke: #fff9ec;
+  stroke-width: 2;
+  fill-opacity: 1;
+}
+
+/*
+ * Keyboard navigation:
+ * SVG groups with tabindex="0" can receive focus.
+ * Focus is made visible through the flower itself.
+ */
+
+.artwork-glyph:focus {
+  outline: none;
+}
+
+/* =========================================================
+   8. ARTWORK TOOLTIP
+   ========================================================= */
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+
+  pointer-events: none;
+
+  width: max-content;
+  max-width: min(300px, calc(100vw - 16px));
+
+  padding: 15px 18px;
+
+  background: var(--ivory);
+  color: var(--ink);
+
+  border: 1px solid #d2c7b4;
+  border-radius: 4px;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+.tooltip[hidden] {
+  display: none !important;
+}
+
+.tooltip strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* =========================================================
+   9. LEGEND SECTION
+   ========================================================= */
+
+.legend-area {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.8fr)
+    minmax(0, 1.2fr);
+
+  gap: 50px;
+
+  padding: 55px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.legend-panel h2,
+.bottom-grid h2 {
+  font-size: clamp(32px, 4vw, 55px);
+  line-height: 1.08;
+}
+
+.legend-panel p,
+.bottom-grid p {
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.legend-details {
+  min-width: 0;
+  padding-top: 15px;
+}
+
+/* Legend headings */
+
+.legend-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  flex-wrap: wrap;
+  gap: 8px 16px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.legend-title span {
+  color: var(--muted);
+
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.movement-title {
+  margin-top: 12px;
+}
+
+/* =========================================================
+   10. FLOWER SIZE LEGEND
+   ========================================================= */
+
+.size-key {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  gap: 20px;
+
+  padding: 14px 0 20px;
+}
+
+.sample {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 0;
+
+  color: var(--ink);
+
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sample svg {
+  display: block;
+
+  width: 85px;
+  height: 85px;
+
+  overflow: visible;
+}
+
+.sample span {
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* =========================================================
+   11. ART MOVEMENT COLOR LEGEND
+   ========================================================= */
+
+.movement-legend {
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 12px 22px;
+
+  padding: 20px 0;
+}
+
+.movement-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+
+  white-space: nowrap;
+}
+
+.movement-legend i {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  width: 12px;
+  height: 12px;
+
+  margin: 0;
+
+  border-radius: 50%;
+  border: 1px solid rgba(33, 60, 52, 0.13);
+}
+
+.note,
+.footnote {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.note {
+  max-width: 850px;
+  margin: 5px 0 0;
+}
+
+/* =========================================================
+   12. CURATOR'S NOTE AND DESIGN METHOD
+   ========================================================= */
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.85fr)
+    minmax(0, 1.15fr);
+
+  gap: 65px;
+
+  padding: 50px 0;
+}
+
+.bottom-grid > div {
+  min-width: 0;
+}
+
+.method {
+  border-left: 1px solid var(--border);
+  padding-left: 40px;
+}
+
+.method h3 {
+  margin: 18px 0 16px;
+
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.method p {
+  margin-bottom: 18px;
+}
+
+.method b {
+  color: var(--ink);
+}
+
+.method code {
+  padding: 2px 5px;
+
+  background: rgba(33, 60, 52, 0.06);
+  border-radius: 3px;
+
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+}
+
+.method .footnote {
+  margin-top: 20px;
+}
+
+/* =========================================================
+   13. FOOTER
+   ========================================================= */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 12px 24px;
+
+  padding: 22px 0;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   14. TABLET LAYOUT
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .headline {
+    gap: 28px;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+  }
+
+  .filters {
+    justify-content: flex-start;
+  }
+
+  .legend-area {
+    gap: 32px;
+  }
+
+  .bottom-grid {
+    gap: 35px;
+  }
+
+  .method {
+    padding-left: 28px;
+  }
+}
+
+/* =========================================================
+   15. MOBILE LAYOUT
+   ========================================================= */
+
+@media (max-width: 760px) {
+  main {
+    padding: 20px 18px;
+  }
+
+  header {
+    padding: 8px 0 32px;
+  }
+
+  .headline,
+  .legend-area,
+  .bottom-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .headline {
+    gap: 20px;
+    padding-top: 30px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 10vw, 76px);
+  }
+
+  .intro {
+    max-width: 540px;
+    font-size: 19px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .filters {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .toolbar button {
+    min-height: 40px;
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+
+  .viz-shell {
+    padding: 16px 10px 12px;
+    margin-top: 18px;
+  }
+
+  .chart-top {
+    padding: 0 8px 10px;
+    font-size: 10px;
+  }
+
+  .chart-bottom {
+    padding: 0 10px 8px;
+    font-size: 11px;
+  }
+
+  .legend-area {
+    gap: 20px;
+    padding: 40px 0;
+  }
+
+  .legend-panel h2,
+  .bottom-grid h2 {
+    font-size: clamp(32px, 7vw, 45px);
+  }
+
+  .legend-details {
+    padding-top: 0;
+  }
+
+  .size-key {
+    gap: 8px;
+  }
+
+  .sample svg {
+    width: 70px;
+    height: 70px;
+  }
+
+  .movement-legend {
+    gap: 12px 16px;
+  }
+
+  .bottom-grid {
+    gap: 30px;
+    padding: 40px 0;
+  }
+
+  .method {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .method h3 {
+    font-size: 29px;
+  }
+
+  footer {
+    justify-content: flex-start;
+    padding: 20px 0;
+  }
+}
+
+/* =========================================================
+   16. SMALL MOBILE DEVICES
+   ========================================================= */
+
+@media (max-width: 420px) {
+  main {
+    padding: 16px 14px;
+  }
+
+  h1 {
+    font-size: clamp(44px, 12vw, 56px);
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .eyebrow span {
+    padding: 0 5px;
+  }
+
+  .toolbar button {
+    padding: 8px 11px;
+    font-size: 11px;
+  }
+
+  .viz-shell {
+    padding: 12px 6px 10px;
+  }
+
+  .chart-top {
+    gap: 5px;
+    font-size: 9px;
+  }
+
+  .chart-bottom {
+    font-size: 10px;
+  }
+
+  .sample svg {
+    width: 62px;
+    height: 62px;
+  }
+
+  .sample {
+    font-size: 12px;
+  }
+
+  .movement-legend span {
+    font-size: 12px;
+  }
+
+  footer {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   17. ACCESSIBILITY
+   ========================================================= */
+
+/* Maintain clear focus for keyboard users */
+
+:focus-visible {
+  outline-offset: 3px;
+}
+
+/* Disable unnecessary animation for reduced-motion users */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   18. PRINT STYLING
+   ========================================================= */
+
+@media print {
+  body {
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  main {
+    max-width: none;
+    padding: 12mm;
+  }
+
+  .toolbar button {
+    display: none;
+  }
+
+  .viz-shell {
+    break-inside: avoid;
+  }
+
+  .legend-area,
+  .bottom-grid {
+    break-inside: avoid;
+  }
+
+  .tooltip {
+    display: none !important;
+  }
+}
